@@ -10220,6 +10220,72 @@ Elm.Html.Attributes.make = function (_elm) {
                                         ,property: property
                                         ,attribute: attribute};
 };
+Elm.Html = Elm.Html || {};
+Elm.Html.Events = Elm.Html.Events || {};
+Elm.Html.Events.make = function (_elm) {
+   "use strict";
+   _elm.Html = _elm.Html || {};
+   _elm.Html.Events = _elm.Html.Events || {};
+   if (_elm.Html.Events.values) return _elm.Html.Events.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Json$Decode = Elm.Json.Decode.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $VirtualDom = Elm.VirtualDom.make(_elm);
+   var _op = {};
+   var keyCode = A2($Json$Decode._op[":="],"keyCode",$Json$Decode.$int);
+   var targetChecked = A2($Json$Decode.at,_U.list(["target","checked"]),$Json$Decode.bool);
+   var targetValue = A2($Json$Decode.at,_U.list(["target","value"]),$Json$Decode.string);
+   var defaultOptions = $VirtualDom.defaultOptions;
+   var Options = F2(function (a,b) {    return {stopPropagation: a,preventDefault: b};});
+   var onWithOptions = $VirtualDom.onWithOptions;
+   var on = $VirtualDom.on;
+   var messageOn = F3(function (name,addr,msg) {    return A3(on,name,$Json$Decode.value,function (_p0) {    return A2($Signal.message,addr,msg);});});
+   var onClick = messageOn("click");
+   var onDoubleClick = messageOn("dblclick");
+   var onMouseMove = messageOn("mousemove");
+   var onMouseDown = messageOn("mousedown");
+   var onMouseUp = messageOn("mouseup");
+   var onMouseEnter = messageOn("mouseenter");
+   var onMouseLeave = messageOn("mouseleave");
+   var onMouseOver = messageOn("mouseover");
+   var onMouseOut = messageOn("mouseout");
+   var onBlur = messageOn("blur");
+   var onFocus = messageOn("focus");
+   var onSubmit = messageOn("submit");
+   var onKey = F3(function (name,addr,handler) {    return A3(on,name,keyCode,function (code) {    return A2($Signal.message,addr,handler(code));});});
+   var onKeyUp = onKey("keyup");
+   var onKeyDown = onKey("keydown");
+   var onKeyPress = onKey("keypress");
+   return _elm.Html.Events.values = {_op: _op
+                                    ,onBlur: onBlur
+                                    ,onFocus: onFocus
+                                    ,onSubmit: onSubmit
+                                    ,onKeyUp: onKeyUp
+                                    ,onKeyDown: onKeyDown
+                                    ,onKeyPress: onKeyPress
+                                    ,onClick: onClick
+                                    ,onDoubleClick: onDoubleClick
+                                    ,onMouseMove: onMouseMove
+                                    ,onMouseDown: onMouseDown
+                                    ,onMouseUp: onMouseUp
+                                    ,onMouseEnter: onMouseEnter
+                                    ,onMouseLeave: onMouseLeave
+                                    ,onMouseOver: onMouseOver
+                                    ,onMouseOut: onMouseOut
+                                    ,on: on
+                                    ,onWithOptions: onWithOptions
+                                    ,defaultOptions: defaultOptions
+                                    ,targetValue: targetValue
+                                    ,targetChecked: targetChecked
+                                    ,keyCode: keyCode
+                                    ,Options: Options};
+};
 Elm.StartApp = Elm.StartApp || {};
 Elm.StartApp.Simple = Elm.StartApp.Simple || {};
 Elm.StartApp.Simple.make = function (_elm) {
@@ -10263,38 +10329,96 @@ Elm.Register.make = function (_elm) {
    $Debug = Elm.Debug.make(_elm),
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
    $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm),
-   $StartApp$Simple = Elm.StartApp.Simple.make(_elm);
+   $StartApp$Simple = Elm.StartApp.Simple.make(_elm),
+   $String = Elm.String.make(_elm);
    var _op = {};
-   var buttons = A2($Html.div,
-   _U.list([]),
-   _U.list([A2($Html.button,_U.list([$Html$Attributes.id("register")]),_U.list([$Html.text("Register")]))
-           ,A2($Html.button,_U.list([$Html$Attributes.id("cancel")]),_U.list([$Html.text("Cancel")]))]));
-   var description = A2($Html.div,
-   _U.list([]),
-   _U.list([A2($Html.label,_U.list([$Html$Attributes.$for("description")]),_U.list([$Html.text("Description")]))
-           ,A2($Html.textarea,_U.list([$Html$Attributes.id("description")]),_U.list([]))]));
-   var capabilities = A2($Html.div,
-   _U.list([]),
-   _U.list([A2($Html.label,_U.list([$Html$Attributes.$for("capabilities")]),_U.list([$Html.text("Capabilities")]))
-           ,A2($Html.input,_U.list([$Html$Attributes.id("capabilities"),$Html$Attributes.type$("text")]),_U.list([]))]));
-   var roles = A2($Html.div,
-   _U.list([]),
-   _U.list([A2($Html.input,_U.list([$Html$Attributes.id("mentor"),$Html$Attributes.type$("checkbox")]),_U.list([]))
-           ,A2($Html.label,_U.list([$Html$Attributes.$for("mentor")]),_U.list([$Html.text("Mentor")]))
-           ,A2($Html.input,_U.list([$Html$Attributes.id("coach"),$Html$Attributes.type$("checkbox")]),_U.list([]))
-           ,A2($Html.label,_U.list([$Html$Attributes.$for("coach")]),_U.list([$Html.text("Coach")]))]));
-   var spots = A2($Html.div,
-   _U.list([]),
-   _U.list([A2($Html.label,_U.list([$Html$Attributes.$for("spots")]),_U.list([$Html.text("Spots:")]))
-           ,A2($Html.input,
-           _U.list([$Html$Attributes.id("spots"),$Html$Attributes.type$("text"),$Html$Attributes.placeholder("Number of possible coachees")]),
-           _U.list([]))]));
-   var view = F2(function (address,model) {    return A2($Html.div,_U.list([]),_U.list([spots,roles,capabilities,description,buttons]));});
-   var update = F2(function (action,model) {    var _p0 = action;return model;});
+   var update = F2(function (action,model) {
+      var _p0 = action;
+      switch (_p0.ctor)
+      {case "NoOp": return model;
+         case "UpdateSpots": return _U.update(model,{spots: A2($Maybe.withDefault,0,$Result.toMaybe($String.toInt(_p0._0)))});
+         case "UpdateMentor": return _U.update(model,{mentor: _p0._0});
+         case "UpdateCoach": return _U.update(model,{coach: _p0._0});
+         case "UpdateCapabilities": return _U.update(model,{capabilities: $String.words(_p0._0)});
+         case "UpdateDescription": return _U.update(model,{description: _p0._0});
+         case "Register": return _U.update(model,{spots: 0,mentor: false,coach: false,capabilities: _U.list([]),description: ""});
+         default: return _U.update(model,{spots: 0,mentor: false,coach: false,capabilities: _U.list([]),description: ""});}
+   });
+   var Cancel = {ctor: "Cancel"};
+   var Register = {ctor: "Register"};
+   var buttons = F2(function (address,model) {
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2($Html.button,_U.list([$Html$Attributes.id("register"),A2($Html$Events.onClick,address,Register)]),_U.list([$Html.text("Register")]))
+              ,A2($Html.button,_U.list([$Html$Attributes.id("cancel"),A2($Html$Events.onClick,address,Cancel)]),_U.list([$Html.text("Cancel")]))]));
+   });
+   var UpdateDescription = function (a) {    return {ctor: "UpdateDescription",_0: a};};
+   var description = F2(function (address,model) {
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2($Html.label,_U.list([$Html$Attributes.$for("description")]),_U.list([$Html.text("Description")]))
+              ,A2($Html.textarea,
+              _U.list([$Html$Attributes.id("description")
+                      ,$Html$Attributes.value(model.description)
+                      ,A3($Html$Events.on,"input",$Html$Events.targetValue,function (_p1) {    return A2($Signal.message,address,UpdateDescription(_p1));})]),
+              _U.list([]))]));
+   });
+   var UpdateCapabilities = function (a) {    return {ctor: "UpdateCapabilities",_0: a};};
+   var capabilities = F2(function (address,model) {
+      var capabilitiesToString = A2($String.join," ",model.capabilities);
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2($Html.label,_U.list([$Html$Attributes.$for("capabilities")]),_U.list([$Html.text("Capabilities")]))
+              ,A2($Html.input,
+              _U.list([$Html$Attributes.id("capabilities")
+                      ,$Html$Attributes.type$("text")
+                      ,$Html$Attributes.value(capabilitiesToString)
+                      ,A3($Html$Events.on,"input",$Html$Events.targetValue,function (_p2) {    return A2($Signal.message,address,UpdateCapabilities(_p2));})]),
+              _U.list([]))]));
+   });
+   var UpdateCoach = function (a) {    return {ctor: "UpdateCoach",_0: a};};
+   var UpdateMentor = function (a) {    return {ctor: "UpdateMentor",_0: a};};
+   var roles = F2(function (address,model) {
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2($Html.input,
+              _U.list([$Html$Attributes.id("mentor")
+                      ,$Html$Attributes.type$("checkbox")
+                      ,$Html$Attributes.checked(model.mentor)
+                      ,A3($Html$Events.on,"change",$Html$Events.targetChecked,function (_p3) {    return A2($Signal.message,address,UpdateMentor(_p3));})]),
+              _U.list([]))
+              ,A2($Html.label,_U.list([$Html$Attributes.$for("mentor")]),_U.list([$Html.text("Mentor")]))
+              ,A2($Html.input,
+              _U.list([$Html$Attributes.id("coach")
+                      ,$Html$Attributes.type$("checkbox")
+                      ,$Html$Attributes.checked(model.coach)
+                      ,A3($Html$Events.on,"change",$Html$Events.targetChecked,function (_p4) {    return A2($Signal.message,address,UpdateCoach(_p4));})]),
+              _U.list([]))
+              ,A2($Html.label,_U.list([$Html$Attributes.$for("coach")]),_U.list([$Html.text("Coach")]))]));
+   });
+   var UpdateSpots = function (a) {    return {ctor: "UpdateSpots",_0: a};};
+   var spots = F2(function (address,model) {
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2($Html.label,_U.list([$Html$Attributes.$for("spots")]),_U.list([$Html.text("Spots:")]))
+              ,A2($Html.input,
+              _U.list([$Html$Attributes.id("spots")
+                      ,$Html$Attributes.type$("text")
+                      ,$Html$Attributes.placeholder("Number of possible coachees")
+                      ,$Html$Attributes.value($Basics.toString(model.spots))
+                      ,A3($Html$Events.on,"input",$Html$Events.targetValue,function (_p5) {    return A2($Signal.message,address,UpdateSpots(_p5));})]),
+              _U.list([]))]));
+   });
+   var view = F2(function (address,model) {
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2(spots,address,model),A2(roles,address,model),A2(capabilities,address,model),A2(description,address,model),A2(buttons,address,model)]));
+   });
    var NoOp = {ctor: "NoOp"};
    var model = {spots: 0,mentor: false,coach: false,capabilities: _U.list([]),description: ""};
    var main = $StartApp$Simple.start({model: model,view: view,update: update});
@@ -10303,6 +10427,13 @@ Elm.Register.make = function (_elm) {
                                  ,Model: Model
                                  ,model: model
                                  ,NoOp: NoOp
+                                 ,UpdateSpots: UpdateSpots
+                                 ,UpdateMentor: UpdateMentor
+                                 ,UpdateCoach: UpdateCoach
+                                 ,UpdateCapabilities: UpdateCapabilities
+                                 ,UpdateDescription: UpdateDescription
+                                 ,Register: Register
+                                 ,Cancel: Cancel
                                  ,update: update
                                  ,spots: spots
                                  ,roles: roles
