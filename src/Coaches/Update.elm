@@ -2,13 +2,13 @@ module Coaches.Update (..) where
 
 
 import Effects exposing (Effects)
+import Hop.Navigate exposing (navigateTo)
+import Task
 
 
 import Coaches.Actions exposing (..)
 import Coaches.Models exposing (..)
-
-
-import Hop.Navigate exposing (navigateTo)
+import Coaches.Effects exposing (..)
 
 
 type alias UpdateModel =
@@ -49,3 +49,17 @@ update action model =
 
         Err error ->
           (model.coaches, Effects.none)
+
+    CreateCoach ->
+      (model.coaches, create new)
+
+    CreateNewCoach ->
+      let
+        path =
+          "/coaches/new"
+
+      in
+        (model.coaches, Effects.map HopAction (navigateTo path))
+
+    CreateCoachDone result ->
+      (model.coaches, Effects.none)
