@@ -16,10 +16,23 @@ import View exposing (..)
 import Routing
 
 
+import Coaches.Effects
+
+
 -- START APP
 init : (AppModel, Effects Action)
 init =
-  (initialModel, Effects.none)
+  let
+    fxs =
+      [
+        Effects.map CoachesAction Coaches.Effects.fetchAll
+      ]
+
+    fx =
+      Effects.batch fxs
+
+  in
+    (Models.initialModel, fx)
 
 
 routerSignal : Signal Action

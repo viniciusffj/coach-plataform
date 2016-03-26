@@ -1,8 +1,11 @@
 module Coaches.Actions (..) where
 
 
-import Coaches.Models exposing (CoachId)
+import Coaches.Models exposing (CoachId, Coach)
+
+
 import Hop
+import Http
 
 
 type Action =
@@ -10,3 +13,4 @@ type Action =
   | HopAction ()
   | EditCoach CoachId
   | ListCoaches
+  | FetchAllDone (Result Http.Error (List Coach))

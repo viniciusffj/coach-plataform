@@ -17,6 +17,6 @@ type alias AppModel =
 initialModel : AppModel
 initialModel =
   {
-    coaches = [ Coach 1 "Sam Newman" 3 True True "Microservices" "Description" ],
+    coaches = [ ],
     routing = Routing.initialModel
   }

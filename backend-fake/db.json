@@ -3,29 +3,29 @@
     {
       "id": 1,
       "name": "Martin Fowler",
-      "mentor": True,
-      "coach": True,
-      "spots": 2
-      "description": "Test of description 1",
-      "capabilities": "Design"
+      "spots": 2,
+      "mentor": true,
+      "coach": true,
+      "capabilities": "Design",
+      "description": "Desc 1"
     },
     {
       "id": 2,
       "name": "Uncle Bob",
-      "mentor": False,
-      "coach": True,
-      "spots": 1
-      "description": "Test of description 2",
-      "capabilities": "Design, Java"
+      "spots": 1,
+      "mentor": false,
+      "coach": true,
+      "capabilities": "Design, Java",
+      "description": "Desc 2"
     },
     {
       "id": 3,
       "name": "Sam Newman",
-      "mentor": True,
-      "coach": False,
-      "spots": 3
-      "description": "Test of description 3",
-      "capabilities": "Design, Microservices"
+      "spots": 3,
+      "mentor": true,
+      "coach": false,
+      "capabilities": "Design, Microservices",
+      "description": "Desc 3"
     }
   ]
 }
