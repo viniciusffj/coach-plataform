@@ -6,7 +6,7 @@ type alias CoachId =
 
 type alias Coach =
   {
-    coachId : CoachId,
+    id : CoachId,
     name : String,
     spots : Int,
     coach : Bool,
@@ -19,7 +19,7 @@ type alias Coach =
 new : Coach
 new =
   {
-    coachId = 0,
+    id = 0,
     name = "",
     spots = 0,
     coach = False,

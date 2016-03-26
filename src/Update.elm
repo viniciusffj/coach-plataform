@@ -11,6 +11,9 @@ import Models exposing (..)
 import Coaches.Update exposing (..)
 
 
+import Routing
+
+
 update : Action -> AppModel -> (AppModel, Effects Action)
 update action model =
   case action of
@@ -29,3 +32,11 @@ update action model =
 
     NoOp ->
       (model, Effects.none)
+
+    RoutingAction subAction ->
+      let
+        (updatedRouting, fx) =
+          Routing.update subAction model.routing
+
+      in
+        ({ model | routing = updatedRouting }, Effects.map  RoutingAction fx)

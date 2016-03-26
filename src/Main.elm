@@ -13,10 +13,18 @@ import Update exposing (..)
 import View exposing (..)
 
 
+import Routing
+
+
 -- START APP
 init : (AppModel, Effects Action)
 init =
   (initialModel, Effects.none)
+
+
+routerSignal : Signal Action
+routerSignal =
+  Signal.map RoutingAction Routing.signal
 
 
 app : StartApp.App AppModel
@@ -24,7 +32,7 @@ app =
   StartApp.start
   {
     init = init,
-    inputs = [ ],
+    inputs = [ routerSignal ],
     update = update,
     view = view
   }
@@ -40,3 +48,8 @@ main =
 port runner : Signal (Task.Task Never ())
 port runner =
   app.tasks
+
+
+port routeRunTask : Task.Task () ()
+port routeRunTask =
+  Routing.run
