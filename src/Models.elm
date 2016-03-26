@@ -1,10 +1,17 @@
 module Models (..) where
 
 
-type alias Model =
-  {}
+import Coaches.Models exposing (Coach)
 
 
-initialModel : Model
+type alias AppModel =
+  {
+    coaches : List Coach
+  }
+
+
+initialModel : AppModel
 initialModel =
-  {}
+  {
+    coaches = [ ]
+  }

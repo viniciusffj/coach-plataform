@@ -8,6 +8,24 @@ import Actions exposing (..)
 import Models exposing (..)
 
 
-update : Action -> Model -> (Model, Effects Action)
+import Coaches.Update exposing (..)
+
+
+update : Action -> AppModel -> (AppModel, Effects Action)
 update action model =
-  (model, Effects.none)
+  case action of
+    CoachesAction subAction ->
+      let
+        updateModel =
+          {
+            coaches = model.coaches
+          }
+
+        (updatedCoaches, fx) =
+          Coaches.Update.update subAction updateModel
+      
+      in
+        ({ model | coaches = updatedCoaches }, Effects.map CoachesAction fx)
+
+    NoOp ->
+      (model, Effects.none)
