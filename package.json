@@ -1,10 +1,13 @@
 {
-  "name": "coach-plataform-backend",
+  "name": "coach-plataform",
   "version": "0.0.1",
-  "description": "A fake backend to test the coach plataform UI.",
-  "main": "app.js",
+  "description": "A coach plataform.",
+  "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "api": "node ./backend-fake/api.js",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server --port 3000"
   },
   "repository": {
     "type": "git",
@@ -16,6 +19,8 @@
   "author": "Rodrigo Morais <morais.rm@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "basscss": "^7.1.1",
+    "font-awesome": "^4.5.0",
     "json-server": "^0.8.9"
   }
 }
