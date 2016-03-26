@@ -3,6 +3,7 @@ module Coaches.List (..) where
 
 import Html exposing (..)
 import Html.Attributes exposing (class)
+import Html.Events exposing (onClick)
 
 
 import Coaches.Actions exposing (..)
@@ -49,7 +50,9 @@ list address model =
                               th [ ]
                                  [ text "Coach" ],
                               th [ ]
-                                 [ text "Spots" ]
+                                 [ text "Spots" ],
+                              th [ ]
+                                 [ text "Actions" ]
                 ]
             ],
             tbody [ ]
@@ -85,5 +88,19 @@ coachRow address model coach =
           td  [ ]
               [ text (toString coach.spots) ],
           td  [ ]
-              [ ]
+              [
+                editBtn address coach
+              ]
       ]
+
+
+editBtn : Signal.Address Action -> Coach -> Html.Html
+editBtn address coach =
+  button  [ class "btn regular",
+            onClick address (EditCoach coach.id)
+          ]
+          [
+            i [ class "fa fa-pencil mr1" ]
+              [ ],
+            text "Edit"
+          ]
