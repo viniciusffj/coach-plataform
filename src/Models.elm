@@ -13,5 +13,5 @@ type alias AppModel =
 initialModel : AppModel
 initialModel =
   {
-    coaches = [ ]
+    coaches = [ Coach 1 "Sam Newman" 3 True True "Microservices" "Description" ]
   }

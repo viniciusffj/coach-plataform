@@ -1,24 +1,31 @@
 {
-  "players": [
+  "coaches": [
     {
       "id": 1,
-      "name": "Sally",
-      "level": 2
+      "name": "Martin Fowler",
+      "mentor": True,
+      "coach": True,
+      "spots": 2
+      "description": "Test of description 1",
+      "capabilities": "Design"
     },
     {
       "id": 2,
-      "name": "Lance",
-      "level": 1
+      "name": "Uncle Bob",
+      "mentor": False,
+      "coach": True,
+      "spots": 1
+      "description": "Test of description 2",
+      "capabilities": "Design, Java"
     },
     {
       "id": 3,
-      "name": "Aki",
-      "level": 3
-    },
-    {
-      "id": 4,
-      "name": "Maria",
-      "level": 4
+      "name": "Sam Newman",
+      "mentor": True,
+      "coach": False,
+      "spots": 3
+      "description": "Test of description 3",
+      "capabilities": "Design, Microservices"
     }
   ]
 }
