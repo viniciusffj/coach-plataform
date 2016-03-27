@@ -3,5 +3,10 @@ elm-stuff/
 # elm-repl generated files
 repl-temp-*
 .DS_Store
+
+#node
 node_modules
 npm-debug.log
+
+#dist
+dist/
