@@ -51,7 +51,7 @@ update action model =
           (model.coaches, Effects.none)
 
     CreateCoach ->
-      (model.coaches, create new)
+      (model.coaches, Effects.none)
 
     CreateNewCoach ->
       let
